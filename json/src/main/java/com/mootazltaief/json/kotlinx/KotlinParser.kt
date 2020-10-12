@@ -4,6 +4,7 @@ import android.content.Context
 import com.mootazltaief.json.Utils
 import com.mootazltaief.json.kotlinx.models.PhotosKotlin
 import com.mootazltaief.json.kotlinx.models.UserKotlin
+import com.mootazltaief.json.kotlinx.models.mm.KotlinMap
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
 
@@ -12,6 +13,7 @@ class KotlinParser(context: Context) {
     private val sample1 = Utils.loadJSONFromAsset(context, "sample1.json")
     private val sample2 = Utils.loadJSONFromAsset(context, "sample2.json")
     private val sample3 = Utils.loadJSONFromAsset(context, "sample3.json")
+    private val sample4Mm = Utils.loadJSONFromAsset(context, "mm.json")
 
     fun parseSample1(): List<UserKotlin> {
         return Json.decodeFromString(ListSerializer(UserKotlin.serializer()), sample1)
@@ -24,4 +26,9 @@ class KotlinParser(context: Context) {
     fun parseSample3(): PhotosKotlin {
         return Json.decodeFromString(PhotosKotlin.serializer(), sample3)
     }
+
+    fun parseMmSample4(): KotlinMap {
+        return Json { ignoreUnknownKeys = true }.decodeFromString(KotlinMap.serializer(), sample4Mm)
+    }
+
 }

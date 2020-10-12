@@ -5,12 +5,14 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.mootazltaief.json.Utils
 import com.mootazltaief.json.jackson.models.PhotosJackson
 import com.mootazltaief.json.jackson.models.UserJackson
+import com.mootazltaief.json.jackson.models.mm.JacksonMap
 
 class JacksonParser(context: Context) {
 
     private val sample1 = Utils.loadJSONFromAsset(context, "sample1.json")
     private val sample2 = Utils.loadJSONFromAsset(context, "sample2.json")
     private val sample3 = Utils.loadJSONFromAsset(context, "sample3.json")
+    private val sample4mm = Utils.loadJSONFromAsset(context, "mm.json")
 
 
     private val jackson = ObjectMapper()
@@ -28,6 +30,10 @@ class JacksonParser(context: Context) {
 
     fun parseSample3(): PhotosJackson{
         return jackson.readValue(sample3, PhotosJackson::class.java)
+    }
+
+    fun parseMmSample4(): JacksonMap {
+        return jackson.readValue(sample4mm, JacksonMap::class.java)
     }
 
 }
