@@ -7,7 +7,6 @@ import com.mootazltaief.json.kotlinx.models.UserKotlin
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
 
-
 class KotlinParser(context: Context) {
 
     private val sample1 = Utils.loadJSONFromAsset(context, "sample1.json")
